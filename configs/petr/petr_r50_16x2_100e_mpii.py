@@ -58,7 +58,8 @@ model = dict(
                             dropout=0.1),
                         dict(
                             type='opera.MultiScaleDeformablePoseAttention',
-                            embed_dims=256)
+                            embed_dims=256,
+                            num_points=16,)
                     ],
                     feedforward_channels=1024,
                     ffn_dropout=0.1,
@@ -96,7 +97,9 @@ model = dict(
                     feedforward_channels=1024,
                     ffn_dropout=0.1,
                     operation_order=('self_attn', 'norm', 'cross_attn', 'norm',
-                                     'ffn', 'norm')))),
+                                     'ffn', 'norm'))),
+            num_keypoints=16,),
+                
         positional_encoding=dict(
             type='mmcv.SinePositionalEncoding',
             num_feats=128,
