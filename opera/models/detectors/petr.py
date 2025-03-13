@@ -346,6 +346,27 @@ class PETR(DETR):
                          (0, 176, 240), (252, 176, 243), (0, 176, 240),
                          (252, 176, 243), (0, 176, 240), (252, 176, 243),
                          (236, 6, 124), (236, 6, 124)]
+
+        elif num_keypoint == 16:
+            colors_hp = [
+                (169, 209, 142),  # 0: r_ankle
+                (169, 209, 142),  # 1: r_knee
+                (255, 255, 0),  # 2: r_hip
+                (255, 255, 0),  # 3: l_hip
+                (169, 209, 142),  # 4: l_knee
+                (169, 209, 142),  # 5: l_ankle
+                (255, 102, 0),  # 6: pelvis
+                (255, 102, 0),  # 7: thorax
+                (236, 6, 124),  # 8: upper_neck
+                (236, 6, 124),  # 9: head_top
+                (0, 176, 240),  # 10: r_wrist
+                (0, 176, 240),  # 11: r_elbow
+                (252, 176, 243),  # 12: r_shoulder
+                (252, 176, 243),  # 13: l_shoulder
+                (0, 176, 240),  # 14: l_elbow
+                (0, 176, 240)   # 15: l_wrist
+            ]
+        
         elif num_keypoint == 17:
             colors_hp = [(236, 6, 124), (236, 6, 124), (236, 6, 124),
                          (236, 6, 124), (236, 6, 124), (169, 209, 142),
@@ -377,6 +398,63 @@ class PETR(DETR):
                   (169, 209, 142), (255, 255, 0), (255, 255, 0), (255, 102, 0),
                   (0, 176, 240), (252, 176, 243), (0, 176, 240), (0, 176, 240),
                   (252, 176, 243), (252, 176, 243), (236, 6, 124)]
+            
+        elif num_keypoint == 16:
+            edges = [
+                [0, 1],  # r_ankle → r_knee
+                [1, 2],  # r_knee → r_hip
+                [2, 6],  # r_hip → pelvis
+                [3, 6],  # l_hip → pelvis
+                [3, 4],  # l_hip → l_knee
+                [4, 5],  # l_knee → l_ankle
+                [6, 7],  # pelvis → thorax
+                [7, 8],  # thorax → upper_neck
+                [8, 9],  # upper_neck → head_top
+                [7, 12],  # thorax → r_shoulder
+                [7, 13],  # thorax → l_shoulder
+                [12, 11],  # r_shoulder → r_elbow
+                [11, 10],  # r_elbow → r_wrist
+                [13, 14],  # l_shoulder → l_elbow
+                [14, 15]   # l_elbow → l_wrist
+            ]
+
+            ec = [
+                (169, 209, 142),  # r_ankle → r_knee
+                (169, 209, 142),  # r_knee → r_hip
+                (255, 255, 0),  # r_hip → pelvis
+                (255, 255, 0),  # l_hip → pelvis
+                (169, 209, 142),  # l_hip → l_knee
+                (169, 209, 142),  # l_knee → l_ankle
+                (255, 102, 0),  # pelvis → thorax
+                (236, 6, 124),  # thorax → upper_neck
+                (236, 6, 124),  # upper_neck → head_top
+                (252, 176, 243),  # thorax → r_shoulder
+                (252, 176, 243),  # thorax → l_shoulder
+                (0, 176, 240),  # r_shoulder → r_elbow
+                (0, 176, 240),  # r_elbow → r_wrist
+                (0, 176, 240),  # l_shoulder → l_elbow
+                (0, 176, 240)   # l_elbow → l_wrist
+            ]
+
+        elif num_keypoint == 16:
+            colors_hp = [
+                (169, 209, 142),  # 0: r_ankle
+                (169, 209, 142),  # 1: r_knee
+                (255, 255, 0),  # 2: r_hip
+                (255, 255, 0),  # 3: l_hip
+                (169, 209, 142),  # 4: l_knee
+                (169, 209, 142),  # 5: l_ankle
+                (255, 102, 0),  # 6: pelvis
+                (255, 102, 0),  # 7: thorax
+                (236, 6, 124),  # 8: upper_neck
+                (236, 6, 124),  # 9: head_top
+                (0, 176, 240),  # 10: r_wrist
+                (0, 176, 240),  # 11: r_elbow
+                (252, 176, 243),  # 12: r_shoulder
+                (252, 176, 243),  # 13: l_shoulder
+                (0, 176, 240),  # 14: l_elbow
+                (0, 176, 240)   # 15: l_wrist
+            ]
         elif num_keypoint == 17:
             edges = [
                 [0, 1],

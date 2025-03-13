@@ -138,5 +138,7 @@ optimizer = dict(
 optimizer_config = dict(grad_clip=dict(max_norm=0.1, norm_type=2))
 # learning policy
 lr_config = dict(policy='step', step=[80])
-runner = dict(type='EpochBasedRunner', max_epochs=10)
-checkpoint_config = dict(interval=2, max_keep_ckpts=5)
+runner = dict(type='EpochBasedRunner', max_epochs=100)
+checkpoint_config = dict(interval=1, max_keep_ckpts=5)
+
+# Modified cocoeval in pycocotools

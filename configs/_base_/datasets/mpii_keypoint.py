@@ -87,7 +87,7 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/val.json',
+        ann_file=data_root + 'annotations/train.json',
         img_prefix=data_root + './',
         pipeline=train_pipeline),
     val=dict(
@@ -100,4 +100,4 @@ data = dict(
         ann_file=data_root + 'annotations/val.json',
         img_prefix=data_root + './',
         pipeline=test_pipeline))
-evaluation = dict(interval=3, metric='keypoints')
+evaluation = dict(interval=1, metric='keypoints')
