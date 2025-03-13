@@ -79,6 +79,27 @@ class OksCost(object):
                 1.07, 1.07,
                 .87, .87,
                 .89, .89], dtype=np.float32) / 10.0
+
+        elif num_keypoints == 16:
+            self.sigmas = np.array([
+                .89,  # 0: r_ankle same
+                .87,  # 1: r_knee same
+                1.07, # 2: r_hip same
+                1.07, # 3: l_hip same
+                .87,  # 4: l_knee same
+                .89,  # 5: l_ankle same
+                1.07, # 6: pelvis random
+                1.07, # 7: thorax random
+                .87,  # 8: upper_neck random
+                .89,  # 9: head_top  random
+                .62,  # 10: r_wrist same
+                .72,  # 11: r_elbow same
+                .79,  # 12: r_shoulder same
+                .79,  # 13: l_shoulder same
+                .72,  # 14: l_elbow same
+                .62   # 15: l_wrist same
+            ], dtype=np.float32) / 10.0            
+
         elif num_keypoints == 14:
             self.sigmas = np.array([
                 .79, .79,

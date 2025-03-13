@@ -91,6 +91,27 @@ class OKSLoss(nn.Module):
                 .26, .25, .25, .35, .35, .79, .79, .72, .72, .62, .62, 1.07,
                 1.07, .87, .87, .89, .89
             ], dtype=np.float32) / 10.0
+        
+        elif num_keypoints == 16:
+            self.sigmas = np.array([
+                .89,  # 0: r_ankle
+                .87,  # 1: r_knee
+                1.07, # 2: r_hip
+                1.07, # 3: l_hip
+                .87,  # 4: l_knee
+                .89,  # 5: l_ankle
+                1.07, # 6: pelvis
+                1.07, # 7: thorax
+                .87,  # 8: upper_neck
+                .89,  # 9: head_top
+                .79,  # 10: r_wrist
+                .72,  # 11: r_elbow
+                .79,  # 12: r_shoulder
+                .79,  # 13: l_shoulder
+                .72,  # 14: l_elbow
+                .79   # 15: l_wrist
+            ], dtype=np.float32) / 10.0
+
         elif num_keypoints == 14:
             self.sigmas = np.array([
                 .79, .79, .72, .72, .62, .62, 1.07, 1.07, .87, .87, .89, .89,
